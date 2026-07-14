@@ -109,12 +109,18 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/[0.08] py-8 text-xs text-mutedgray md:flex-row md:items-center md:justify-between">
           <p>&copy; 2026 ABISAL GROUP. All rights reserved.</p>
-          <p className="flex flex-wrap gap-x-2">
-            <span>Privacy Policy</span>
+          <p className="flex flex-wrap items-center gap-x-2">
+            <Link href="/privacy" className="transition-colors duration-300 hover:text-acid">
+              Privacy Policy
+            </Link>
             <span>&middot;</span>
-            <span>Terms of Use</span>
+            <Link href="/terms-of-use" className="transition-colors duration-300 hover:text-acid">
+              Terms of Use
+            </Link>
             <span>&middot;</span>
-            <span>Cookie Policy</span>
+            <Link href="/cookies" className="transition-colors duration-300 hover:text-acid">
+              Cookie Policy
+            </Link>
           </p>
         </div>
       </div>
