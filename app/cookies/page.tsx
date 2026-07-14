@@ -52,7 +52,7 @@ export default function CookiePolicyPage() {
         {
           heading: "6. Contact Us",
           paragraphs: [
-            "If you have questions about this Cookie Policy, contact us at privacy@abisalgroup.com.",
+            "If you have questions about this Cookie Policy, contact us at contacto@abisalgroup.com.",
           ],
         },
       ]}
@@ -92,7 +92,7 @@ export default function CookiePolicyPage() {
         {
           heading: "6. Contacto",
           paragraphs: [
-            "Si tenés preguntas sobre esta Política de Cookies, escribinos a privacy@abisalgroup.com.",
+            "Si tenés preguntas sobre esta Política de Cookies, escribinos a contacto@abisalgroup.com.",
           ],
         },
       ]}

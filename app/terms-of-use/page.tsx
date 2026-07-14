@@ -68,7 +68,7 @@ export default function TermsOfUsePage() {
         {
           heading: "9. Contact Us",
           paragraphs: [
-            "If you have questions about these Terms, contact us at legal@abisalgroup.com.",
+            "If you have questions about these Terms, contact us at contacto@abisalgroup.com.",
           ],
         },
       ]}
@@ -124,7 +124,7 @@ export default function TermsOfUsePage() {
         {
           heading: "9. Contacto",
           paragraphs: [
-            "Si tenés preguntas sobre estos Términos, escribinos a legal@abisalgroup.com.",
+            "Si tenés preguntas sobre estos Términos, escribinos a contacto@abisalgroup.com.",
           ],
         },
       ]}

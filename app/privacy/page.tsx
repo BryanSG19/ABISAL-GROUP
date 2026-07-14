@@ -85,7 +85,7 @@ export default function PrivacyPolicyPage() {
         {
           heading: "11. Contact Us",
           paragraphs: [
-            "If you have questions about this Privacy Policy or how we handle your information, contact us at privacy@abisalgroup.com.",
+            "If you have questions about this Privacy Policy or how we handle your information, contact us at contacto@abisalgroup.com.",
           ],
         },
       ]}
@@ -157,7 +157,7 @@ export default function PrivacyPolicyPage() {
         {
           heading: "11. Contacto",
           paragraphs: [
-            "Si tenés preguntas sobre esta Política de Privacidad o sobre cómo manejamos tu información, escribinos a privacy@abisalgroup.com.",
+            "Si tenés preguntas sobre esta Política de Privacidad o sobre cómo manejamos tu información, escribinos a contacto@abisalgroup.com.",
           ],
         },
       ]}
