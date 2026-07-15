@@ -10,6 +10,21 @@ type CarouselItem = {
   image: string;
 };
 
+type Locale = "es" | "en";
+
+const LABELS: Record<Locale, { previous: string; next: string; goTo: (title: string) => string }> = {
+  es: {
+    previous: "Anterior",
+    next: "Siguiente",
+    goTo: (title) => `Ir a ${title}`,
+  },
+  en: {
+    previous: "Previous",
+    next: "Next",
+    goTo: (title) => `Go to ${title}`,
+  },
+};
+
 const AUTOPLAY_MS = 4000;
 
 // Position of each card relative to the active one, keyed by circular
@@ -24,9 +39,12 @@ const LAYOUT = [
 
 export default function CapabilitiesCarousel({
   items,
+  locale = "en",
 }: {
   items: CarouselItem[];
+  locale?: Locale;
 }) {
+  const labels = LABELS[locale];
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState<number | null>(null);
   const [width, setWidth] = useState(900);
@@ -176,7 +194,7 @@ export default function CapabilitiesCarousel({
       <div className="mt-8 flex items-center justify-center gap-6">
         <button
           type="button"
-          aria-label="Previous"
+          aria-label={labels.previous}
           onClick={() => goTo(active - 1)}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-bone transition-colors duration-300 hover:border-acid hover:text-acid"
         >
@@ -188,7 +206,7 @@ export default function CapabilitiesCarousel({
             <button
               key={item.title}
               type="button"
-              aria-label={`Go to ${item.title}`}
+              aria-label={labels.goTo(item.title)}
               onClick={() => goTo(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === active ? "w-6 bg-acid" : "w-1.5 bg-white/20"
@@ -199,7 +217,7 @@ export default function CapabilitiesCarousel({
 
         <button
           type="button"
-          aria-label="Next"
+          aria-label={labels.next}
           onClick={() => goTo(active + 1)}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-bone transition-colors duration-300 hover:border-acid hover:text-acid"
         >

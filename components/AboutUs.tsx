@@ -3,7 +3,28 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function AboutUs() {
+type Locale = "es" | "en";
+
+const COPY = {
+  es: {
+    eyebrow: "Nosotros",
+    para1:
+      "ABISAL es una firma de estrategia e inteligencia artificial aplicada creada para organizaciones que buscan ir más allá de la experimentación.",
+    para2:
+      "Trabajamos en la intersección de la inteligencia artificial, la estrategia empresarial, la optimización y las nuevas formas de trabajar para desarrollar capacidades que mejoren la toma de decisiones, optimicen las operaciones y produzcan resultados concretos en el desempeño empresarial.",
+  },
+  en: {
+    eyebrow: "About Us",
+    para1:
+      "ABISAL GROUP is a strategy and applied intelligence firm built for organizations that want to move beyond experimentation.",
+    para2:
+      "We work at the intersection of AI, business strategy, optimization, and new ways of working to design capabilities that improve decisions, operations, and measurable performance.",
+  },
+} satisfies Record<Locale, { eyebrow: string; para1: string; para2: string }>;
+
+export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
+  const t = COPY[locale];
+
   return (
     <section
       id="about-us"
@@ -32,7 +53,7 @@ export default function AboutUs() {
             className="md:col-span-4"
           >
             <p className="mb-4 inline-block bg-acid px-3 py-1.5 text-2xl font-semibold uppercase tracking-[0.15em] text-abyss md:text-3xl">
-              About Us
+              {t.eyebrow}
             </p>
           </motion.div>
 
@@ -44,13 +65,10 @@ export default function AboutUs() {
             className="md:col-span-7 md:col-start-6"
           >
             <p className="text-xl leading-relaxed text-abyss md:text-2xl">
-              ABISAL GROUP is a strategy and applied intelligence firm built
-              for organizations that want to move beyond experimentation.
+              {t.para1}
             </p>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate/80">
-              We work at the intersection of AI, business strategy,
-              optimization, and new ways of working to design capabilities
-              that improve decisions, operations, and measurable performance.
+              {t.para2}
             </p>
           </motion.div>
         </div>

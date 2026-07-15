@@ -4,6 +4,26 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AbyssBubbleLoop from "./AbyssBubbleLoop";
 
+type Locale = "es" | "en";
+
+const COPY = {
+  es: {
+    title: "La inteligencia detrás del crecimiento del mañana.",
+    subline: ["Profundiza", "Construye con inteligencia", "Llega más lejos"],
+    cta: "Hablemos",
+    ctaHref: "/#get-in-touch",
+  },
+  en: {
+    title: "Intelligence beneath tomorrow’s business growth.",
+    subline: ["Go deeper", "Build smarter", "Move forward"],
+    cta: "Connect with us",
+    ctaHref: "/en/#get-in-touch",
+  },
+} satisfies Record<
+  Locale,
+  { title: string; subline: string[]; cta: string; ctaHref: string }
+>;
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: (delay: number) => ({
@@ -13,7 +33,9 @@ const fadeUp = {
   }),
 };
 
-export default function Hero() {
+export default function Hero({ locale = "en" }: { locale?: Locale }) {
+  const t = COPY[locale];
+
   return (
     <section
       id="top"
@@ -32,7 +54,7 @@ export default function Hero() {
           variants={fadeUp}
           className="max-w-4xl font-sans text-[2.5rem] font-thin leading-[1.08] tracking-tight text-bone sm:text-6xl md:text-7xl"
         >
-          Intelligence beneath tomorrow&rsquo;s business growth.
+          {t.title}
         </motion.h1>
 
         <motion.div
@@ -42,11 +64,11 @@ export default function Hero() {
           variants={fadeUp}
           className="mt-8 flex flex-col gap-1 text-lg font-medium text-acid sm:flex-row sm:items-center sm:gap-3 md:text-xl"
         >
-          <span>Go deeper</span>
+          <span>{t.subline[0]}</span>
           <span className="hidden text-coolgray sm:inline">|</span>
-          <span>Build smarter</span>
+          <span>{t.subline[1]}</span>
           <span className="hidden text-coolgray sm:inline">|</span>
-          <span>Move forward</span>
+          <span>{t.subline[2]}</span>
         </motion.div>
 
         <motion.div
@@ -57,10 +79,10 @@ export default function Hero() {
           className="mt-12 flex flex-wrap items-center gap-8"
         >
           <Link
-            href="/#get-in-touch"
+            href={t.ctaHref}
             className="group inline-flex items-center gap-2 rounded-full bg-acid px-7 py-3.5 text-sm font-medium text-abyss transition-all duration-300 hover:bg-acid-bright"
           >
-            Connect with us
+            {t.cta}
             <span className="transition-transform duration-300 group-hover:translate-x-0.5">
               →
             </span>

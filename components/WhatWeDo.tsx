@@ -3,34 +3,78 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const SERVICES = [
-  {
-    number: "01",
-    title: "AI Literacy",
-    description:
-      "Workshops, executive sessions, and practical training that help teams understand, adopt, and apply AI in their daily business context.",
-  },
-  {
-    number: "02",
-    title: "Applied AI Sprints",
-    description:
-      "Focused projects that solve specific business challenges with clear timelines, practical deliverables, and tangible outcomes.",
-  },
-  {
-    number: "03",
-    title: "AI Strategy & Adoption",
-    description:
-      "Diagnostics, prioritization, and roadmaps that help companies move from scattered experimentation to organized value creation.",
-  },
-  {
-    number: "04",
-    title: "Custom Engines & Agents",
-    description:
-      "Tailored engines and agents designed around the company's data, processes, and evolving business needs.",
-  },
-];
+type Locale = "es" | "en";
 
-export default function WhatWeDo() {
+const COPY = {
+  es: {
+    eyebrow: "Lo que hacemos",
+    heading: "Lo que hacemos",
+    paragraph:
+      "Trabajamos con organizaciones en distintos niveles de madurez: desde formación ejecutiva y laboratorios de IA aplicada enfocados, hasta hojas de ruta de adopción estratégica y motores a la medida construidos en torno a necesidades reales del negocio.",
+    services: [
+      {
+        number: "01",
+        title: "Formación práctica en IA",
+        description:
+          "Talleres, sesiones ejecutivas y formación práctica que ayudan a los equipos a entender, adoptar y aplicar la IA en su contexto de negocio diario.",
+      },
+      {
+        number: "02",
+        title: "Laboratorios de IA aplicada",
+        description:
+          "Proyectos enfocados que resuelven desafíos empresariales específicos con plazos claros, entregables prácticos y resultados tangibles.",
+      },
+      {
+        number: "03",
+        title: "Estrategia y adopción de IA",
+        description:
+          "Diagnósticos, priorización y hojas de ruta que ayudan a las empresas a pasar de una experimentación dispersa a una creación de valor organizada.",
+      },
+      {
+        number: "04",
+        title: "Motores y agentes personalizados",
+        description:
+          "Motores y agentes a la medida, diseñados en torno a los datos, procesos y necesidades cambiantes de cada empresa.",
+      },
+    ],
+  },
+  en: {
+    eyebrow: "What We Do",
+    heading: "What We Do",
+    paragraph:
+      "We work with organizations at different levels of maturity — from executive education and focused AI sprints to strategic adoption roadmaps and tailored engines built around real business needs.",
+    services: [
+      {
+        number: "01",
+        title: "AI Literacy",
+        description:
+          "Workshops, executive sessions, and practical training that help teams understand, adopt, and apply AI in their daily business context.",
+      },
+      {
+        number: "02",
+        title: "Applied AI Sprints",
+        description:
+          "Focused projects that solve specific business challenges with clear timelines, practical deliverables, and tangible outcomes.",
+      },
+      {
+        number: "03",
+        title: "AI Strategy & Adoption",
+        description:
+          "Diagnostics, prioritization, and roadmaps that help companies move from scattered experimentation to organized value creation.",
+      },
+      {
+        number: "04",
+        title: "Custom Engines & Agents",
+        description:
+          "Tailored engines and agents designed around the company's data, processes, and evolving business needs.",
+      },
+    ],
+  },
+};
+
+export default function WhatWeDo({ locale = "en" }: { locale?: Locale }) {
+  const t = COPY[locale];
+
   return (
     <section
       id="what-we-do"
@@ -52,20 +96,17 @@ export default function WhatWeDo() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-5"
           >
-            <p className="eyebrow mb-4 text-[#8a9a1f]">What We Do</p>
+            <p className="eyebrow mb-4 text-[#8a9a1f]">{t.eyebrow}</p>
             <h2 className="text-3xl font-thin leading-tight text-abyss md:text-4xl">
-              What We Do
+              {t.heading}
             </h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-slate/80">
-              We work with organizations at different levels of maturity —
-              from executive education and focused AI sprints to strategic
-              adoption roadmaps and tailored engines built around real
-              business needs.
+              {t.paragraph}
             </p>
           </motion.div>
 
           <div className="md:col-span-7">
-            {SERVICES.map((service, i) => (
+            {t.services.map((service, i) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}

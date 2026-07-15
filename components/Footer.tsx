@@ -2,23 +2,76 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, type FormEvent } from "react";
 
-const WHAT_WE_DO_LINKS = [
-  "AI Literacy",
-  "Applied AI Sprints",
-  "AI Strategy & Adoption",
-  "Custom Engines & Agents",
-];
+type Locale = "es" | "en";
 
-const COMPANY_LINKS = [
-  { label: "Abisal Difference", href: "/abisal-difference" },
-  { label: "About Us", href: "/#about-us" },
-  { label: "Our Work", href: "/our-work" },
-  { label: "Get in Touch", href: "/#get-in-touch" },
-];
+const WHAT_WE_DO_LINKS: Record<Locale, string[]> = {
+  es: [
+    "Formación práctica en IA",
+    "Laboratorios de IA aplicada",
+    "Estrategia y adopción de IA",
+    "Motores y agentes personalizados",
+  ],
+  en: [
+    "AI Literacy",
+    "Applied AI Sprints",
+    "AI Strategy & Adoption",
+    "Custom Engines & Agents",
+  ],
+};
+
+const COMPANY_LINKS: Record<Locale, { label: string; slug: string }[]> = {
+  es: [
+    { label: "La diferencia Abisal", slug: "/abisal-difference/" },
+    { label: "Sobre nosotros", slug: "/#about-us" },
+    { label: "Nuestro trabajo", slug: "/our-work/" },
+    { label: "Hablemos", slug: "/#get-in-touch" },
+  ],
+  en: [
+    { label: "Abisal Difference", slug: "/abisal-difference/" },
+    { label: "About Us", slug: "/#about-us" },
+    { label: "Our Work", slug: "/our-work/" },
+    { label: "Get in Touch", slug: "/#get-in-touch" },
+  ],
+};
+
+const COPY = {
+  es: {
+    whatWeDo: "Qué hacemos",
+    company: "Empresa",
+    connect: "Conecta",
+    stayClose: "Mantente cerca de lo que viene.",
+    emailPlaceholder: "Correo electrónico",
+    submit: "Mantente conectado",
+    submitted: "¡Listo! Ya estás en la lista.",
+    rights: "© 2026 ABISAL GROUP. Todos los derechos reservados.",
+    privacy: "Política de privacidad",
+    terms: "Términos de uso",
+    cookies: "Política de cookies",
+  },
+  en: {
+    whatWeDo: "What We Do",
+    company: "Company",
+    connect: "Connect",
+    stayClose: "Stay close to what’s next.",
+    emailPlaceholder: "Email address",
+    submit: "Stay Connected",
+    submitted: "You’re on the list. Welcome aboard.",
+    rights: "© 2026 ABISAL GROUP. All rights reserved.",
+    privacy: "Privacy Policy",
+    terms: "Terms of Use",
+    cookies: "Cookie Policy",
+  },
+} satisfies Record<Locale, Record<string, string>>;
 
 export default function Footer() {
+  const pathname = usePathname();
+  const locale: Locale = pathname.startsWith("/en") ? "en" : "es";
+  const prefix = locale === "en" ? "/en" : "";
+  const t = COPY[locale];
+
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -46,12 +99,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-bone">What We Do</h3>
+            <h3 className="text-sm font-semibold text-bone">
+              {t.whatWeDo}
+            </h3>
             <ul className="mt-5 space-y-3">
-              {WHAT_WE_DO_LINKS.map((label) => (
+              {WHAT_WE_DO_LINKS[locale].map((label) => (
                 <li key={label}>
                   <Link
-                    href="/what-we-do"
+                    href={`${prefix}/what-we-do/`}
                     className="text-sm text-coolgray transition-colors duration-300 hover:text-acid"
                   >
                     {label}
@@ -62,12 +117,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-bone">Company</h3>
+            <h3 className="text-sm font-semibold text-bone">{t.company}</h3>
             <ul className="mt-5 space-y-3">
-              {COMPANY_LINKS.map((link) => (
-                <li key={link.href}>
+              {COMPANY_LINKS[locale].map((link) => (
+                <li key={link.slug}>
                   <Link
-                    href={link.href}
+                    href={`${prefix}${link.slug}`}
                     className="text-sm text-coolgray transition-colors duration-300 hover:text-acid"
                   >
                     {link.label}
@@ -78,14 +133,12 @@ export default function Footer() {
           </div>
 
           <div id="connect" className="col-span-2 md:col-span-1">
-            <h3 className="text-sm font-semibold text-bone">Connect</h3>
+            <h3 className="text-sm font-semibold text-bone">{t.connect}</h3>
             <p className="mt-5 max-w-[22ch] text-sm leading-relaxed text-coolgray">
-              Stay close to what&rsquo;s next.
+              {t.stayClose}
             </p>
             {submitted ? (
-              <p className="mt-4 text-sm text-acid">
-                You&rsquo;re on the list. Welcome aboard.
-              </p>
+              <p className="mt-4 text-sm text-acid">{t.submitted}</p>
             ) : (
               <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
                 <input
@@ -93,14 +146,14 @@ export default function Footer() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email address"
+                  placeholder={t.emailPlaceholder}
                   className="w-full rounded-full border border-bone/20 bg-transparent px-4 py-2.5 text-sm text-bone placeholder:text-mutedgray focus:border-acid focus:outline-none"
                 />
                 <button
                   type="submit"
                   className="w-fit rounded-full bg-acid px-5 py-2.5 text-sm font-medium text-abyss transition-colors duration-300 hover:bg-acid-bright"
                 >
-                  Stay Connected
+                  {t.submit}
                 </button>
               </form>
             )}
@@ -108,18 +161,18 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/[0.08] py-8 text-xs text-mutedgray md:flex-row md:items-center md:justify-between">
-          <p>&copy; 2026 ABISAL GROUP. All rights reserved.</p>
+          <p>{t.rights}</p>
           <p className="flex flex-wrap items-center gap-x-2">
             <Link href="/privacy" className="transition-colors duration-300 hover:text-acid">
-              Privacy Policy
+              {t.privacy}
             </Link>
             <span>&middot;</span>
             <Link href="/terms-of-use" className="transition-colors duration-300 hover:text-acid">
-              Terms of Use
+              {t.terms}
             </Link>
             <span>&middot;</span>
             <Link href="/cookies" className="transition-colors duration-300 hover:text-acid">
-              Cookie Policy
+              {t.cookies}
             </Link>
           </p>
         </div>

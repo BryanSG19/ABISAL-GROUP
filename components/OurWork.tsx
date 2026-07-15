@@ -2,31 +2,68 @@
 
 import { motion } from "framer-motion";
 
-const CASES = [
-  {
-    category: "Applied AI Sprint",
-    title: "AI Sprint for Market Validation",
-    description:
-      "From claims and consumer language to evidence-backed business decisions.",
-    state: "Coming soon",
-  },
-  {
-    category: "Custom Engines & Agents",
-    title: "Competitive Intelligence Engine",
-    description:
-      "A tailored benchmark engine for monitoring competitors, claims, pricing, and market signals.",
-    state: "Coming soon",
-  },
-  {
-    category: "AI Strategy & Adoption",
-    title: "AI Adoption Roadmap",
-    description:
-      "A prioritized roadmap to move from scattered AI usage to measurable business value.",
-    state: "Coming soon",
-  },
-];
+type Locale = "es" | "en";
 
-export default function OurWork() {
+const COPY = {
+  es: {
+    eyebrow: "Nuestro Trabajo",
+    heading: "Nuestro Trabajo",
+    cases: [
+      {
+        category: "Laboratorio de IA aplicada",
+        title: "Laboratorio de IA para validación de mercado",
+        description:
+          "De las afirmaciones y el lenguaje del consumidor a decisiones de negocio respaldadas por evidencia.",
+        state: "Próximamente",
+      },
+      {
+        category: "Motores y agentes personalizados",
+        title: "Motor de inteligencia competitiva",
+        description:
+          "Un motor de benchmarking a la medida para monitorear competidores, afirmaciones, precios y señales de mercado.",
+        state: "Próximamente",
+      },
+      {
+        category: "Estrategia y adopción de IA",
+        title: "Hoja de ruta de adopción de IA",
+        description:
+          "Una hoja de ruta priorizada para pasar de un uso disperso de la IA a un valor de negocio medible.",
+        state: "Próximamente",
+      },
+    ],
+  },
+  en: {
+    eyebrow: "Our Work",
+    heading: "Our Work",
+    cases: [
+      {
+        category: "Applied AI Sprint",
+        title: "AI Sprint for Market Validation",
+        description:
+          "From claims and consumer language to evidence-backed business decisions.",
+        state: "Coming soon",
+      },
+      {
+        category: "Custom Engines & Agents",
+        title: "Competitive Intelligence Engine",
+        description:
+          "A tailored benchmark engine for monitoring competitors, claims, pricing, and market signals.",
+        state: "Coming soon",
+      },
+      {
+        category: "AI Strategy & Adoption",
+        title: "AI Adoption Roadmap",
+        description:
+          "A prioritized roadmap to move from scattered AI usage to measurable business value.",
+        state: "Coming soon",
+      },
+    ],
+  },
+};
+
+export default function OurWork({ locale = "en" }: { locale?: Locale }) {
+  const t = COPY[locale];
+
   return (
     <section id="our-work" className="relative bg-abyss section-pad">
       <div className="container-content">
@@ -37,14 +74,14 @@ export default function OurWork() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl"
         >
-          <p className="eyebrow mb-4">Our Work</p>
+          <p className="eyebrow mb-4">{t.eyebrow}</p>
           <h2 className="text-3xl font-thin leading-tight text-bone md:text-4xl">
-            Our Work
+            {t.heading}
           </h2>
         </motion.div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {CASES.map((item, i) => (
+          {t.cases.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 24 }}

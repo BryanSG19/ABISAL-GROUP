@@ -10,9 +10,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ABISAL GROUP — Intelligence beneath tomorrow's business growth",
+  title: "ABISAL GROUP — La inteligencia detrás del crecimiento del mañana",
   description:
-    "ABISAL GROUP designs tailored frameworks that turn AI and new ways of working into high-confidence decisions, smarter operations, and measurable business performance.",
+    "ABISAL GROUP diseña marcos de trabajo a la medida que convierten la inteligencia artificial y las nuevas formas de trabajar en decisiones más confiables, operaciones más inteligentes y un desempeño empresarial medible.",
 };
 
 export const viewport: Viewport = {
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="es" className={poppins.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

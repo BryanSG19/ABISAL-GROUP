@@ -4,17 +4,17 @@ import WhatWeDo from "@/components/WhatWeDo";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Lo que hacemos — ABISAL GROUP",
+  title: "What We Do — ABISAL GROUP",
   description:
-    "Formación práctica en IA, laboratorios de IA aplicada, estrategia y adopción de IA, y motores y agentes personalizados — diseñados en torno a necesidades reales del negocio.",
+    "Workshops, applied AI sprints, strategy and adoption roadmaps, and custom engines and agents — designed around real business needs.",
 };
 
-export default function WhatWeDoPage() {
+export default function WhatWeDoPageEn() {
   return (
     <>
       <Header />
       <main>
-        <WhatWeDo locale="es" />
+        <WhatWeDo locale="en" />
       </main>
       <Footer />
     </>
