@@ -9,9 +9,9 @@ const COPY = {
   es: {
     eyebrow: "Nosotros",
     para1:
-      "ABISAL es una firma de estrategia e inteligencia artificial aplicada creada para organizaciones que buscan ir más allá de la experimentación.",
+      "ABISAL es una empresa de estrategia e implementación de inteligencia artificial aplicada para organizaciones que buscan ir más allá de la experimentación y la búsqueda de eficiencias, avanzando hacia la creación de valor.",
     para2:
-      "Trabajamos en la intersección de la inteligencia artificial, la estrategia empresarial, la optimización y las nuevas formas de trabajar para desarrollar capacidades que mejoren la toma de decisiones, optimicen las operaciones y produzcan resultados concretos en el desempeño empresarial.",
+      "Trabajamos en la intersección de la inteligencia artificial, la estrategia empresarial, y las nuevas formas de trabajo para desarrollar capacidades que mejoren la toma de decisiones, optimicen las operaciones y produzcan resultados tangibles en el desempeño empresarial.",
   },
   en: {
     eyebrow: "About Us",

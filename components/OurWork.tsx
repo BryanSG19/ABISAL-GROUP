@@ -17,7 +17,7 @@ const COPY = {
         state: "Próximamente",
       },
       {
-        category: "Motores y agentes personalizados",
+        category: "Aplicaciones y agentes personalizados",
         title: "Motor de inteligencia competitiva",
         description:
           "Un motor de benchmarking a la medida para monitorear competidores, afirmaciones, precios y señales de mercado.",

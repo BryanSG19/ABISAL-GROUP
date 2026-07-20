@@ -8,7 +8,7 @@ type Locale = "es" | "en";
 
 const COPY = {
   es: {
-    line1: "Desbloquea una nueva inteligencia dentro de tu empresa.",
+    line1: "Despliega una nueva inteligencia dentro de tu empresa.",
     line2: "Ve más allá.",
     cta: "Hablemos",
     ctaHref: "/#get-in-touch",

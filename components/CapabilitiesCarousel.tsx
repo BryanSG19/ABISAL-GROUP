@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 type CarouselItem = {
   number: string;
@@ -12,29 +14,35 @@ type CarouselItem = {
 
 type Locale = "es" | "en";
 
-const LABELS: Record<Locale, { previous: string; next: string; goTo: (title: string) => string }> = {
+const LABELS: Record<
+  Locale,
+  { previous: string; next: string; goTo: (title: string) => string; explore: string; exploreHref: string }
+> = {
   es: {
     previous: "Anterior",
     next: "Siguiente",
     goTo: (title) => `Ir a ${title}`,
+    explore: "Explora",
+    exploreHref: "/what-we-do/",
   },
   en: {
     previous: "Previous",
     next: "Next",
     goTo: (title) => `Go to ${title}`,
+    explore: "Explore",
+    exploreHref: "/en/what-we-do/",
   },
 };
 
-const AUTOPLAY_MS = 4000;
+const AUTOPLAY_MS = 5000;
 
 // Position of each card relative to the active one, keyed by circular
-// distance d = 0 (active/front), 1 (next/right), 2 (opposite/back), 3
-// (previous/left). Arranged along a shallow arc, like the front of a wheel.
-const LAYOUT = [
-  { xRatio: 0, y: 0, scale: 1, rotate: 0, opacity: 1, z: 40 },
-  { xRatio: 0.27, y: 44, scale: 0.82, rotate: 8, opacity: 0.85, z: 30 },
-  { xRatio: 0, y: 83, scale: 0.6, rotate: 0, opacity: 0.32, z: 10 },
-  { xRatio: -0.27, y: 44, scale: 0.82, rotate: -8, opacity: 0.85, z: 30 },
+// distance d = 0 (active/front), 1 (next), 2 (opposite/back), 3 (previous).
+const STAGE_LAYOUT = [
+  { xRatio: 0, y: 0, scale: 1, rotate: 0, opacity: 1, z: 40, blur: false },
+  { xRatio: 0.5, y: 10, scale: 0.82, rotate: 10, opacity: 0.55, z: 20, blur: true },
+  { xRatio: 0, y: -18, scale: 0.68, rotate: 0, opacity: 0.28, z: 10, blur: true },
+  { xRatio: -0.5, y: 10, scale: 0.82, rotate: -10, opacity: 0.55, z: 20, blur: true },
 ];
 
 export default function CapabilitiesCarousel({
@@ -46,11 +54,11 @@ export default function CapabilitiesCarousel({
 }) {
   const labels = LABELS[locale];
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [width, setWidth] = useState(900);
+  const [width, setWidth] = useState(600);
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const n = items.length;
+  const item = items[active];
 
   const restartTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -82,131 +90,104 @@ export default function CapabilitiesCarousel({
     restartTimer();
   };
 
-  const handleEnter = (i: number) => {
-    setHovered(i);
-    if (timerRef.current) clearInterval(timerRef.current);
-  };
-
-  const handleLeave = () => {
-    setHovered(null);
-    restartTimer();
-  };
-
   return (
-    <div>
-      <div
-        ref={containerRef}
-        className="relative h-[390px] w-full sm:h-[442px] md:h-[494px]"
-      >
-        {items.map((item, i) => {
-          const d = ((i - active) % n + n) % n;
-          const layout = LAYOUT[d] ?? LAYOUT[LAYOUT.length - 1];
-          const isActive = d === 0;
-          const isHovered = hovered === i;
-          const x = layout.xRatio * width;
-          return (
-            <button
-              key={item.title}
-              type="button"
-              onClick={() => goTo(i)}
-              onMouseEnter={isActive ? () => handleEnter(i) : undefined}
-              onMouseLeave={isActive ? handleLeave : undefined}
-              aria-current={isActive}
-              aria-label={item.title}
-              className={`absolute left-1/2 top-0 w-[260px] transition-[transform,opacity] duration-700 ease-abisal sm:w-[300px] md:w-[325px] ${
-                isActive ? "cursor-default" : "cursor-pointer"
-              }`}
-              style={{
-                transform: `translateX(calc(-50% + ${x}px)) translateY(${layout.y}px) scale(${layout.scale}) rotate(${layout.rotate}deg)`,
-                opacity: layout.opacity,
-                zIndex: isHovered ? 50 : layout.z,
-                pointerEvents: "auto",
-                perspective: "1200px",
-              }}
+    <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+      <div className="lg:col-span-5">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="block text-6xl font-bold text-acid md:text-7xl">
+              {item.number}
+            </span>
+            <h3 className="mt-6 text-2xl font-thin leading-snug text-bone md:text-3xl">
+              {item.title}
+            </h3>
+            <p className="mt-4 max-w-sm text-base leading-relaxed text-coolgray">
+              {item.description}
+            </p>
+            <Link
+              href={labels.exploreHref}
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-acid px-6 py-3 text-sm font-medium text-abyss transition-all duration-300 hover:bg-acid-bright"
             >
-              <div
-                className="relative aspect-square w-full"
+              {labels.explore}
+              <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <div className="lg:col-span-7">
+        <div
+          ref={containerRef}
+          className="relative mx-auto h-[380px] w-full max-w-md sm:h-[440px] md:h-[500px]"
+        >
+          {items.map((card, i) => {
+            const d = ((i - active) % n + n) % n;
+            const layout = STAGE_LAYOUT[d] ?? STAGE_LAYOUT[STAGE_LAYOUT.length - 1];
+            const isActive = d === 0;
+            const x = layout.xRatio * width;
+            return (
+              <button
+                key={card.title}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-current={isActive}
+                aria-label={card.title}
+                className={`absolute left-1/2 top-1/2 w-[190px] transition-[transform,opacity] duration-700 ease-abisal sm:w-[220px] md:w-[250px] ${
+                  isActive ? "cursor-default" : "cursor-pointer"
+                }`}
                 style={{
-                  transformStyle: "preserve-3d",
-                  transition: "transform 0.6s cubic-bezier(.16,1,.3,1)",
-                  transform: isHovered ? "rotateY(180deg)" : "rotateY(0deg)",
+                  transform: `translate(-50%, -50%) translateX(${x}px) translateY(${layout.y}px) scale(${layout.scale}) rotate(${layout.rotate}deg)`,
+                  opacity: layout.opacity,
+                  zIndex: layout.z,
                 }}
               >
                 <div
-                  className="absolute inset-0 bg-white/15"
-                  style={{
-                    backfaceVisibility: "hidden",
-                    clipPath:
-                      "polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%)",
-                  }}
+                  className={`relative aspect-[9/16] w-full overflow-hidden rounded-[1.75rem] border shadow-2xl ${
+                    isActive ? "border-white/25" : "border-white/10"
+                  }`}
                 >
-                  <div
-                    className="absolute inset-[1px] overflow-hidden"
-                    style={{
-                      clipPath:
-                        "polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%)",
-                    }}
-                  >
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={700}
-                      height={704}
-                      className="block h-full w-full object-cover"
-                    />
-                  </div>
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    sizes="250px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-sky-400/10 via-transparent to-abyss/30" />
+                  {layout.blur && (
+                    <div className="absolute inset-0 bg-sky-400/15 backdrop-blur-md" />
+                  )}
                 </div>
-                <div
-                  className="absolute inset-0 bg-white/15"
-                  style={{
-                    backfaceVisibility: "hidden",
-                    transform: "rotateY(180deg)",
-                    clipPath:
-                      "polygon(0 0, 88% 0, 100% 12%, 100% 100%, 12% 100%, 0 88%)",
-                  }}
-                >
-                <div
-                  className="absolute inset-[1px] flex flex-col justify-between bg-abyss p-6 text-left"
-                  style={{
-                    clipPath:
-                      "polygon(0 0, 88% 0, 100% 12%, 100% 100%, 12% 100%, 0 88%)",
-                  }}
-                >
-                  <span className="text-[28px] font-medium text-acid">
-                    {item.number}
-                  </span>
-                  <div>
-                    <h3 className="text-base font-semibold text-bone sm:text-lg">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-mutedgray">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-                </div>
-              </div>
-            </button>
-          );
-        })}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-6">
+      <div className="lg:col-span-12 mt-2 flex items-center justify-center gap-6">
         <button
           type="button"
           aria-label={labels.previous}
           onClick={() => goTo(active - 1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-bone transition-colors duration-300 hover:border-acid hover:text-acid"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition-colors duration-300 hover:border-acid hover:text-acid"
         >
           ←
         </button>
 
         <div className="flex items-center gap-2">
-          {items.map((item, i) => (
+          {items.map((card, i) => (
             <button
-              key={item.title}
+              key={card.title}
               type="button"
-              aria-label={labels.goTo(item.title)}
+              aria-label={labels.goTo(card.title)}
               onClick={() => goTo(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === active ? "w-6 bg-acid" : "w-1.5 bg-white/20"
@@ -219,7 +200,7 @@ export default function CapabilitiesCarousel({
           type="button"
           aria-label={labels.next}
           onClick={() => goTo(active + 1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-bone transition-colors duration-300 hover:border-acid hover:text-acid"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition-colors duration-300 hover:border-acid hover:text-acid"
         >
           →
         </button>

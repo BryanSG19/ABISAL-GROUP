@@ -28,6 +28,9 @@ const CTA_LABEL: Record<Locale, string> = {
   en: "Get in Touch",
 };
 
+// Temporarily hidden — set back to true to bring back the EN/ES switcher.
+const SHOW_LANGUAGE_SWITCHER = false;
+
 export default function Header() {
   const pathname = usePathname();
   const isEn = pathname.startsWith("/en");
@@ -97,7 +100,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          {!isLegalPage && (
+          {SHOW_LANGUAGE_SWITCHER && !isLegalPage && (
             <Link
               href={switchHref}
               className="rounded-full border border-bone/20 px-2.5 py-1 text-xs font-medium tracking-wide text-bone/60 transition-colors duration-300 hover:border-acid hover:text-acid"
@@ -162,7 +165,7 @@ export default function Header() {
                 >
                   {CTA_LABEL[locale]} →
                 </Link>
-                {!isLegalPage && (
+                {SHOW_LANGUAGE_SWITCHER && !isLegalPage && (
                   <Link
                     href={switchHref}
                     onClick={() => setMenuOpen(false)}

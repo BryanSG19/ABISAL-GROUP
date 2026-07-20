@@ -9,7 +9,7 @@ type Locale = "es" | "en";
 const COPY = {
   es: {
     title: "La inteligencia detrás del crecimiento del mañana.",
-    subline: ["Profundiza", "Construye con inteligencia", "Llega más lejos"],
+    subline: ["Profundiza", "Desarrolla", "Ejecuta", "Llega más lejos"],
     cta: "Hablemos",
     ctaHref: "/#get-in-touch",
   },
@@ -64,11 +64,12 @@ export default function Hero({ locale = "en" }: { locale?: Locale }) {
           variants={fadeUp}
           className="mt-8 flex flex-col gap-1 text-lg font-medium text-acid sm:flex-row sm:items-center sm:gap-3 md:text-xl"
         >
-          <span>{t.subline[0]}</span>
-          <span className="hidden text-coolgray sm:inline">|</span>
-          <span>{t.subline[1]}</span>
-          <span className="hidden text-coolgray sm:inline">|</span>
-          <span>{t.subline[2]}</span>
+          {t.subline.map((word, i) => (
+            <span key={word} className="flex items-center gap-3">
+              {i > 0 && <span className="hidden text-coolgray sm:inline">|</span>}
+              <span>{word}</span>
+            </span>
+          ))}
         </motion.div>
 
         <motion.div

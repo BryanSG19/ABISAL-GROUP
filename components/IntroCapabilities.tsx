@@ -15,14 +15,16 @@ const SHOWCASE_IMAGES = [
 
 const COPY = {
   es: {
+    highlight: "Descubre",
     heading: "Estrategia, inteligencia aplicada y capacidades para el crecimiento.",
     paragraph:
-      "ABISAL GROUP diseña marcos de trabajo a la medida que convierten la inteligencia artificial y las nuevas formas de trabajar en decisiones más confiables, operaciones más inteligentes y un desempeño empresarial medible.",
+      "ABISAL GROUP diseña marcos de trabajo a la medida que transforman la toma de decisiones y las formas de trabajar, integrando la inteligencia artificial para impulsar operaciones más inteligentes, un desempeño superior y resultados tangibles y medibles.",
     cards: [
       {
         number: "01",
         title: "Formación práctica en IA",
-        description: "Fortalecemos la confianza y las capacidades de los equipos.",
+        description:
+          "Fortalecemos la confianza y las capacidades de los equipos para apropiarse de la IA.",
         image: "/capabilities/card-01-ai-literacy-es.webp",
       },
       {
@@ -40,9 +42,9 @@ const COPY = {
       },
       {
         number: "04",
-        title: "Motores y agentes personalizados",
+        title: "Aplicaciones y agentes personalizados",
         description:
-          "Creamos inteligencia a la medida para necesidades empresariales en constante evolución.",
+          "Creamos flujos de trabajo automatizados a la medida para necesidades empresariales en constante evolución.",
         image: "/capabilities/card-04-custom-engines-agents-es.webp",
       },
     ],
@@ -92,6 +94,17 @@ export default function IntroCapabilities({
       <div className="container-content">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
+            {"highlight" in t && t.highlight && (
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-5 text-xs font-bold uppercase tracking-[0.15em] text-acid md:text-sm"
+              >
+                {t.highlight}
+              </motion.p>
+            )}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -132,7 +145,7 @@ export default function IntroCapabilities({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-64"
+          className="mt-24 md:mt-32"
         >
           <CapabilitiesCarousel items={t.cards} locale={locale} />
         </motion.div>

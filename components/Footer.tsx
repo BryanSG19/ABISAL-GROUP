@@ -12,7 +12,7 @@ const WHAT_WE_DO_LINKS: Record<Locale, string[]> = {
     "Formación práctica en IA",
     "Laboratorios de IA aplicada",
     "Estrategia y adopción de IA",
-    "Motores y agentes personalizados",
+    "Aplicaciones y agentes personalizados",
   ],
   en: [
     "AI Literacy",
