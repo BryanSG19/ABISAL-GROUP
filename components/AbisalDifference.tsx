@@ -202,13 +202,12 @@ export default function AbisalDifference({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl"
         >
           <p className="eyebrow mb-4">{t.eyebrow}</p>
           <h2 className="text-3xl font-thin leading-tight text-bone md:text-4xl">
             {t.heading}
           </h2>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-coolgray">
+          <p className="mt-6 max-w-none text-base leading-relaxed text-coolgray">
             {t.paragraph}
           </p>
         </motion.div>
@@ -267,6 +266,20 @@ export default function AbisalDifference({
                   </motion.div>
                 </AnimatePresence>
               </div>
+            </div>
+
+            <div className="relative mx-auto mt-8 h-px w-full max-w-md bg-white/10">
+              <motion.div
+                className="absolute inset-y-0 left-0 bg-acid"
+                animate={{ width: `${((active + 1) / n) * 100}%` }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              />
+              <motion.div
+                className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-acid shadow-[0_0_8px_2px_rgba(174,235,22,0.6)]"
+                animate={{ left: `${((active + 1) / n) * 100}%` }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                style={{ marginLeft: -4 }}
+              />
             </div>
           </motion.div>
 
