@@ -4,7 +4,29 @@ import { motion } from "framer-motion";
 import AbyssParticles from "./AbyssParticles";
 import StaggeredWords from "./StaggeredWords";
 
-export default function PreFooterCTA() {
+type Locale = "es" | "en";
+
+const COPY = {
+  es: {
+    line1: "Despliega una nueva inteligencia dentro de tu empresa.",
+    line2: "Ve más allá.",
+    cta: "Hablemos",
+    ctaHref: "/#get-in-touch",
+  },
+  en: {
+    line1: "Unlock new intelligence within your business.",
+    line2: "Move beyond.",
+    cta: "Get in Touch",
+    ctaHref: "/en/#get-in-touch",
+  },
+} satisfies Record<
+  Locale,
+  { line1: string; line2: string; cta: string; ctaHref: string }
+>;
+
+export default function PreFooterCTA({ locale = "en" }: { locale?: Locale }) {
+  const t = COPY[locale];
+
   return (
     <section
       id="get-in-touch"
@@ -17,14 +39,14 @@ export default function PreFooterCTA() {
       <div className="container-content relative text-center">
         <h2 className="mx-auto max-w-4xl font-sans text-4xl font-thin leading-[1.1] tracking-tight text-bone sm:text-5xl md:text-6xl">
           <StaggeredWords
-            text="Unlock new intelligence within your business."
+            text={t.line1}
             direction="ltr"
             role="primary"
           />
           <br />
           <StaggeredWords
-            text="Move beyond."
-            direction="rtl"
+            text={t.line2}
+            direction="ltr"
             role="secondary"
             className="text-acid"
           />
@@ -38,10 +60,10 @@ export default function PreFooterCTA() {
           className="mt-14"
         >
           <a
-            href="#connect"
+            href={t.ctaHref}
             className="group inline-flex items-center gap-2 rounded-full bg-acid px-9 py-4 text-sm font-medium text-abyss transition-all duration-300 hover:bg-acid-bright"
           >
-            Get in Touch
+            {t.cta}
             <span className="transition-transform duration-300 group-hover:translate-x-0.5">
               →
             </span>
