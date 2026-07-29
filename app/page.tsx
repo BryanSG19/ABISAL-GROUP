@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import IntroCapabilities from "@/components/IntroCapabilities";
-import AboutUs from "@/components/AboutUs";
 import PreFooterCTA from "@/components/PreFooterCTA";
 import Footer from "@/components/Footer";
 
@@ -19,7 +18,6 @@ export default function Home() {
       <main>
         <Hero locale="es" />
         <IntroCapabilities locale="es" />
-        <AboutUs locale="es" />
         <PreFooterCTA locale="es" />
       </main>
       <Footer />

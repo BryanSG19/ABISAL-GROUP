@@ -36,7 +36,7 @@ function shuffledDelays(count: number) {
 
 const COPY = {
   es: {
-    eyebrow: "Conoce",
+    eyebrow: "Explora",
     heading: "Lo que hacemos",
     paragraph:
       "Trabajamos con organizaciones en distintos niveles de madurez: desde formación ejecutiva y laboratorios de IA aplicada enfocados en retos específicos, pasando por el desarrollo de aplicaciones a la medida que responden a necesidades reales del negocio, hasta la definición de estrategias y hojas de ruta para su adopción e implementación.",
@@ -68,34 +68,34 @@ const COPY = {
     ],
   },
   en: {
-    eyebrow: "What We Do",
+    eyebrow: "Explore",
     heading: "What We Do",
     paragraph:
-      "We work with organizations at different levels of maturity — from executive education and focused AI sprints to strategic adoption roadmaps and tailored engines built around real business needs.",
+      "We work with organizations at every stage of AI maturity from executive training and applied AI labs focused on specific challenges, to custom applications built around real business needs, to strategies and roadmaps for AI adoption and implementation.",
     services: [
       {
         number: "01",
         title: "AI Literacy",
         description:
-          "Workshops, executive sessions, and practical training that help teams understand, adopt, and apply AI in their daily business context.",
+          "Overcome AI adoption barriers through workshops, executive sessions, and hands-on training. Equip teams to understand AI's potential and apply it to improve efficiency and unlock new value.",
       },
       {
         number: "02",
-        title: "Applied AI Sprints",
+        title: "Applied AI Labs",
         description:
-          "Focused projects that solve specific business challenges with clear timelines, practical deliverables, and tangible outcomes.",
+          "Solve specific business challenges through focused projects. Produce tangible deliverables and measurable results that demonstrate the value of applied AI while transforming decision-making, strengthening execution, and building new capabilities.",
       },
       {
         number: "03",
         title: "AI Strategy & Adoption",
         description:
-          "Diagnostics, prioritization, and roadmaps that help companies move from scattered experimentation to organized value creation.",
+          "Move from fragmented, unstructured, and individually driven experimentation to AI adoption aligned with strategic priorities and value creation. Identify current capabilities, prioritize use cases, and develop the strategies and implementation roadmaps needed to move forward.",
       },
       {
         number: "04",
-        title: "Custom Engines & Agents",
+        title: "Custom AI Applications and Agents",
         description:
-          "Tailored engines and agents designed around the company's data, processes, and evolving business needs.",
+          "Build tailored applications and AI agents around your organization's teams, processes, and specific business needs—with the flexibility to evolve as your business grows and changes.",
       },
     ],
   },

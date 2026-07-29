@@ -4,12 +4,17 @@ import Footer from "@/components/Footer";
 export default function LegalPage({
   title,
   updated,
+  locale = "en",
   children,
 }: {
   title: string;
   updated: string;
+  locale?: "es" | "en";
   children: React.ReactNode;
 }) {
+  const updatedLabel =
+    locale === "es" ? "Última actualización" : "Last updated";
+
   return (
     <>
       <Header />
@@ -20,7 +25,7 @@ export default function LegalPage({
               {title}
             </h1>
             <p className="mt-4 text-sm text-mutedgray">
-              Last updated: {updated}
+              {updatedLabel}: {updated}
             </p>
             <div className="prose-legal mt-12 space-y-8 text-base leading-relaxed text-coolgray">
               {children}

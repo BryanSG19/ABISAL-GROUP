@@ -16,9 +16,22 @@ body {
   color: #000e19;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer utilities {
   .container-content {
     @apply mx-auto w-full max-w-content px-6 md:px-10;
+  }
+
+  .marquee-track {
+    animation: marquee 45s linear infinite;
   }
 
   .section-pad {

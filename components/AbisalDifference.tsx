@@ -42,7 +42,7 @@ const COPY: Record<
   { eyebrow: string; heading: string; paragraph: string; pillars: Pillar[] }
 > = {
   es: {
-    eyebrow: "Distingue",
+    eyebrow: "Desarrolla",
     heading: "La diferencia Abisal",
     paragraph:
       "Vamos más allá del desafío aparente para comprender de forma integral el negocio y el entorno en el que opera. Desde esa perspectiva, diseñamos marcos de trabajo y aplicaciones inteligentes adaptadas a las necesidades reales de cada organización, orientadas al desarrollo de capacidades sostenibles, repetibles y escalables que se traduzcan en creación de valor, crecimiento y resultados medibles.",
@@ -106,43 +106,66 @@ const COPY: Record<
     ],
   },
   en: {
-    eyebrow: "Abisal Difference",
-    heading: "Abisal Difference",
+    eyebrow: "Distinction",
+    heading: "The Abisal Difference",
     paragraph:
-      "We go beneath the obvious challenge to understand what truly moves the business. Then we design the frameworks, capabilities, and intelligent applications needed to turn strategy into measurable performance.",
+      "We look beneath the surface of each challenge to understand the business and its operating environment as a whole. From that perspective, we design tailored frameworks and intelligent applications around each organization's real needs building sustainable, repeatable, and scalable capabilities that drive value creation, growth, and measurable results.",
     pillars: [
       {
         number: "01",
         title: "Deep Business Understanding",
-        description: "We start with the real business context, not with a tool.",
+        description:
+          "We start with each organization's operating reality and context before defining methodologies, tools, or solutions.",
         icon: Compass,
       },
       {
         number: "02",
-        title: "Applied Intelligence",
-        description: "We use AI where it creates value, clarity, and leverage.",
-        icon: BrainCircuit,
+        title: "Integrated, Cross-Sector Perspective",
+        description:
+          "We look beyond the organization as a standalone entity to understand the ecosystem in which it operates, its interdependencies, and the dynamics connecting different sectors.",
+        icon: Globe2,
       },
       {
         number: "03",
-        title: "Tailored Frameworks",
+        title: "Strategic Application of AI",
         description:
-          "Every company has its own processes, culture, data, and growth challenges.",
-        icon: Blocks,
+          "We integrate AI where it can create the greatest value and strategic leverage for the business, going beyond efficiency, cost savings, and performance optimization.",
+        icon: BrainCircuit,
       },
       {
         number: "04",
-        title: "From Experimentation to Value",
+        title: "Responsible Application of AI",
         description:
-          "We move beyond pilots into capabilities that improve how teams decide and operate.",
-        icon: TrendingUp,
+          "We embed ethical principles, transparency, and human oversight to ensure AI is applied responsibly and aligned with each organization's reality.",
+        icon: ShieldCheck,
       },
       {
         number: "05",
+        title: "Tailored Methodological Architecture",
+        description:
+          "We design frameworks and methodologies around each organization's specific needs, recognizing that every organization has its own DNA shaped by its strategy, processes, culture, and growth challenges.",
+        icon: Blocks,
+      },
+      {
+        number: "06",
         title: "Strategic Execution",
         description:
-          "We connect ideas, tools, people, and processes into business performance.",
+          "From theory to action, our approach centers on execution aligned with clear objectives. We connect ideas, tools, and processes to business strategy to deliver tangible value.",
         icon: Target,
+      },
+      {
+        number: "07",
+        title: "Capability Building",
+        description:
+          "We move beyond experimentation to build sustainable, repeatable, and scalable capabilities and new ways of working.",
+        icon: TrendingUp,
+      },
+      {
+        number: "08",
+        title: "Continuous Evolution",
+        description:
+          "No solution is ever final. We implement, learn, and continuously refine based on experience and feedback.",
+        icon: RefreshCw,
       },
     ],
   },

@@ -25,15 +25,15 @@ const WHAT_WE_DO_LINKS: Record<Locale, string[]> = {
 const COMPANY_LINKS: Record<Locale, { label: string; slug: string }[]> = {
   es: [
     { label: "La diferencia Abisal", slug: "/abisal-difference/" },
-    { label: "Sobre nosotros", slug: "/#about-us" },
+    { label: "Sobre nosotros", slug: "/about-us/" },
     { label: "Nuestro trabajo", slug: "/our-work/" },
-    { label: "Hablemos", slug: "/#get-in-touch" },
+    { label: "Hablemos", slug: "/contact/" },
   ],
   en: [
     { label: "Abisal Difference", slug: "/abisal-difference/" },
-    { label: "About Us", slug: "/#about-us" },
+    { label: "About Us", slug: "/about-us/" },
     { label: "Our Work", slug: "/our-work/" },
-    { label: "Get in Touch", slug: "/#get-in-touch" },
+    { label: "Get in Touch", slug: "/contact/" },
   ],
 };
 
@@ -45,7 +45,9 @@ const COPY = {
     stayClose: "Mantente cerca de lo que viene.",
     emailPlaceholder: "Correo electrónico",
     submit: "Mantente conectado",
+    submitting: "Enviando...",
     submitted: "¡Listo! Ya estás en la lista.",
+    error: "Algo salió mal. Intentá de nuevo.",
     rights: "© 2026 ABISAL GROUP. Todos los derechos reservados.",
     privacy: "Política de privacidad",
     terms: "Términos de uso",
@@ -58,7 +60,9 @@ const COPY = {
     stayClose: "Stay close to what’s next.",
     emailPlaceholder: "Email address",
     submit: "Stay Connected",
+    submitting: "Sending...",
     submitted: "You’re on the list. Welcome aboard.",
+    error: "Something went wrong. Please try again.",
     rights: "© 2026 ABISAL GROUP. All rights reserved.",
     privacy: "Privacy Policy",
     terms: "Terms of Use",
@@ -73,12 +77,26 @@ export default function Footer() {
   const t = COPY[locale];
 
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "submitted" | "error">(
+    "idle"
+  );
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
+    setStatus("submitting");
+    try {
+      const res = await fetch("/contact-handler.php", {
+        method: "POST",
+        body: new FormData(e.currentTarget),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error ?? "Request failed");
+      setStatus("submitted");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -120,7 +138,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-bone">{t.company}</h3>
             <ul className="mt-5 space-y-3">
               {COMPANY_LINKS[locale].map((link) => (
-                <li key={link.slug}>
+                <li key={link.label}>
                   <Link
                     href={`${prefix}${link.slug}`}
                     className="text-sm text-coolgray transition-colors duration-300 hover:text-acid"
@@ -137,23 +155,40 @@ export default function Footer() {
             <p className="mt-5 max-w-[22ch] text-sm leading-relaxed text-coolgray">
               {t.stayClose}
             </p>
-            {submitted ? (
+            {status === "submitted" ? (
               <p className="mt-4 text-sm text-acid">{t.submitted}</p>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
+              <form
+                onSubmit={handleSubmit}
+                className="relative mt-4 flex flex-col gap-3"
+              >
+                <input type="hidden" name="type" value="newsletter" />
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 <input
                   type="email"
+                  name="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t.emailPlaceholder}
                   className="w-full rounded-full border border-bone/20 bg-transparent px-4 py-2.5 text-sm text-bone placeholder:text-mutedgray focus:border-acid focus:outline-none"
                 />
+                {status === "error" && (
+                  <p className="text-xs text-red-400">{t.error}</p>
+                )}
                 <button
                   type="submit"
-                  className="w-fit rounded-full bg-acid px-5 py-2.5 text-sm font-medium text-abyss transition-colors duration-300 hover:bg-acid-bright"
+                  disabled={status === "submitting"}
+                  className="w-fit rounded-full bg-acid px-5 py-2.5 text-sm font-medium text-abyss transition-colors duration-300 hover:bg-acid-bright disabled:opacity-60"
                 >
-                  {t.submit}
+                  {status === "submitting" ? t.submitting : t.submit}
                 </button>
               </form>
             )}
@@ -163,15 +198,15 @@ export default function Footer() {
         <div className="mt-16 flex flex-col gap-4 border-t border-white/[0.08] py-8 text-xs text-mutedgray md:flex-row md:items-center md:justify-between">
           <p>{t.rights}</p>
           <p className="flex flex-wrap items-center gap-x-2">
-            <Link href="/privacy" className="transition-colors duration-300 hover:text-acid">
+            <Link href={`${prefix}/privacy`} className="transition-colors duration-300 hover:text-acid">
               {t.privacy}
             </Link>
             <span>&middot;</span>
-            <Link href="/terms-of-use" className="transition-colors duration-300 hover:text-acid">
+            <Link href={`${prefix}/terms-of-use`} className="transition-colors duration-300 hover:text-acid">
               {t.terms}
             </Link>
             <span>&middot;</span>
-            <Link href="/cookies" className="transition-colors duration-300 hover:text-acid">
+            <Link href={`${prefix}/cookies`} className="transition-colors duration-300 hover:text-acid">
               {t.cookies}
             </Link>
           </p>

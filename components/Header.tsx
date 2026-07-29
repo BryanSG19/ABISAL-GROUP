@@ -12,13 +12,13 @@ const NAV_LINKS: Record<Locale, { label: string; href: string }[]> = {
   es: [
     { label: "Lo que hacemos", href: "/what-we-do/" },
     { label: "La diferencia Abisal", href: "/abisal-difference/" },
-    { label: "Nosotros", href: "/#about-us" },
+    { label: "Nosotros", href: "/about-us/" },
     { label: "Nuestro Trabajo", href: "/our-work/" },
   ],
   en: [
     { label: "What We Do", href: "/en/what-we-do/" },
     { label: "Abisal Difference", href: "/en/abisal-difference/" },
-    { label: "About Us", href: "/en/#about-us" },
+    { label: "About Us", href: "/en/about-us/" },
     { label: "Our Work", href: "/en/our-work/" },
   ],
 };
@@ -28,14 +28,13 @@ const CTA_LABEL: Record<Locale, string> = {
   en: "Get in Touch",
 };
 
-// Temporarily hidden — set back to true to bring back the EN/ES switcher.
-const SHOW_LANGUAGE_SWITCHER = false;
+const SHOW_LANGUAGE_SWITCHER = true;
 
 export default function Header() {
   const pathname = usePathname();
   const isEn = pathname.startsWith("/en");
   const locale: Locale = isEn ? "en" : "es";
-  const isLegalPage = /^\/(privacy|terms-of-use|cookies)(\/|$)/.test(
+  const isLegalPage = /^\/(en\/)?(privacy|terms-of-use|cookies)(\/|$)/.test(
     pathname
   );
 
@@ -62,7 +61,7 @@ export default function Header() {
 
   const homeHref = locale === "en" ? "/en/" : "/";
   const links = NAV_LINKS[locale];
-  const ctaHref = locale === "en" ? "/en/#get-in-touch" : "/#get-in-touch";
+  const ctaHref = locale === "en" ? "/en/contact/" : "/contact/";
 
   return (
     <header
@@ -90,7 +89,7 @@ export default function Header() {
         <nav className="hidden lg:flex items-center gap-10">
           {links.map((link) => (
             <Link
-              key={link.href}
+              key={link.label}
               href={link.href}
               className="link-underline text-sm text-bone/80 hover:text-acid transition-colors duration-300"
             >
@@ -103,7 +102,7 @@ export default function Header() {
           {SHOW_LANGUAGE_SWITCHER && !isLegalPage && (
             <Link
               href={switchHref}
-              className="rounded-full border border-bone/20 px-2.5 py-1 text-xs font-medium tracking-wide text-bone/60 transition-colors duration-300 hover:border-acid hover:text-acid"
+              className="inline-flex items-center rounded-full border border-bone/20 px-4 py-2.5 text-sm font-medium tracking-wide text-bone/60 transition-colors duration-300 hover:border-acid hover:text-acid"
             >
               {switchLabel}
             </Link>
@@ -149,7 +148,7 @@ export default function Header() {
             <div className="container-content flex flex-col gap-6 py-8">
               {links.map((link) => (
                 <Link
-                  key={link.href}
+                  key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="text-base text-bone/85 hover:text-acid transition-colors"
@@ -169,7 +168,7 @@ export default function Header() {
                   <Link
                     href={switchHref}
                     onClick={() => setMenuOpen(false)}
-                    className="rounded-full border border-bone/20 px-3 py-2 text-sm font-medium text-bone/70 hover:border-acid hover:text-acid transition-colors"
+                    className="inline-flex items-center rounded-full border border-bone/20 px-4 py-2.5 text-sm font-medium text-bone/70 hover:border-acid hover:text-acid transition-colors"
                   >
                     {switchLabel}
                   </Link>

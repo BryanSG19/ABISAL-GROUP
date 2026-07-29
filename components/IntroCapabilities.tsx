@@ -15,7 +15,7 @@ const SHOWCASE_IMAGES = [
 
 const COPY = {
   es: {
-    highlight: "Descubre",
+    highlight: "Profundiza",
     heading: "Estrategia, inteligencia aplicada y capacidades para el crecimiento.",
     paragraph:
       "ABISAL GROUP diseña marcos de trabajo a la medida que transforman la toma de decisiones y las formas de trabajar, integrando la inteligencia artificial para impulsar operaciones más inteligentes, un desempeño superior y resultados tangibles y medibles.",
@@ -50,33 +50,37 @@ const COPY = {
     ],
   },
   en: {
+    highlight: "Discover",
     heading: "Strategy, applied intelligence, and growth capabilities.",
     paragraph:
-      "ABISAL GROUP designs tailored frameworks that turn AI and new ways of working into high-confidence decisions, smarter operations, and measurable business performance.",
+      "ABISAL GROUP designs tailored frameworks that transform decision-making and ways of working, embedding artificial intelligence to enable smarter operations, stronger performance, and tangible, measurable results.",
     cards: [
       {
         number: "01",
         title: "AI Literacy",
-        description: "Build confidence across teams.",
-        image: "/capabilities/card-01-ai-literacy-v4.jpg",
+        description:
+          "Build the confidence and capabilities teams need to adopt AI and put it into practice.",
+        image: "/capabilities/card-01-ai-literacy-es.webp",
       },
       {
         number: "02",
-        title: "Applied AI Sprints",
-        description: "Turn business challenges into tangible outcomes.",
-        image: "/capabilities/card-02-applied-ai-sprints-v4.jpg",
+        title: "Applied AI Labs",
+        description:
+          "Turn business challenges into practical solutions and measurable outcomes.",
+        image: "/capabilities/card-02-applied-ai-sprints-es.webp",
       },
       {
         number: "03",
-        title: "AI Strategy & Adoption",
-        description: "Move from experimentation to value.",
-        image: "/capabilities/card-03-ai-strategy-adoption-v4.jpg",
+        title: "AI Strategy and Adoption",
+        description: "Move from AI experimentation to tangible results.",
+        image: "/capabilities/card-03-ai-strategy-adoption-es.webp",
       },
       {
         number: "04",
-        title: "Custom Engines & Agents",
-        description: "Create tailored intelligence for evolving business needs.",
-        image: "/capabilities/card-04-custom-engines-agents-v4.jpg",
+        title: "Custom AI Applications and Agents",
+        description:
+          "Create tailored intelligence and automated workflows for evolving business needs.",
+        image: "/capabilities/card-04-custom-engines-agents-es.webp",
       },
     ],
   },

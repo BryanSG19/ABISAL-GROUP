@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import AbisalDifference from "@/components/AbisalDifference";
+import AbyssalDescent from "@/components/AbyssalDescent";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function AbisalDifferencePage() {
     <>
       <Header />
       <main>
-        <AbisalDifference locale="es" />
+        <AbyssalDescent locale="es" />
       </main>
       <Footer />
     </>

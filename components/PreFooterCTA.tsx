@@ -9,15 +9,15 @@ type Locale = "es" | "en";
 const COPY = {
   es: {
     line1: "Despliega una nueva inteligencia dentro de tu empresa.",
-    line2: "Ve más allá.",
+    line2: "Llega más lejos.",
     cta: "Hablemos",
-    ctaHref: "/#get-in-touch",
+    ctaHref: "/contact/",
   },
   en: {
-    line1: "Unlock new intelligence within your business.",
+    line1: "Deploy a new layer of intelligence within your business.",
     line2: "Move beyond.",
     cta: "Get in Touch",
-    ctaHref: "/en/#get-in-touch",
+    ctaHref: "/en/contact/",
   },
 } satisfies Record<
   Locale,
@@ -28,13 +28,11 @@ export default function PreFooterCTA({ locale = "en" }: { locale?: Locale }) {
   const t = COPY[locale];
 
   return (
-    <section
-      id="get-in-touch"
-      className="relative flex items-center overflow-hidden bg-ultradark py-32 md:py-44"
-    >
+    <section className="relative flex items-center overflow-hidden bg-gradient-to-b from-[#000E19] to-[#000A12] py-32 md:py-44">
       <AbyssParticles
         className="absolute inset-0 h-full w-full opacity-70"
         density={30}
+        linkDistance={0}
       />
       <div className="container-content relative text-center">
         <h2 className="mx-auto max-w-4xl font-sans text-4xl font-thin leading-[1.1] tracking-tight text-bone sm:text-5xl md:text-6xl">

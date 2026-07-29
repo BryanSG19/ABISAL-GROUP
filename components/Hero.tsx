@@ -11,13 +11,13 @@ const COPY = {
     title: "La inteligencia detrás del crecimiento del mañana.",
     subline: ["Profundiza", "Desarrolla", "Ejecuta", "Llega más lejos"],
     cta: "Hablemos",
-    ctaHref: "/#get-in-touch",
+    ctaHref: "/contact/",
   },
   en: {
     title: "Intelligence beneath tomorrow’s business growth.",
-    subline: ["Go deeper", "Build smarter", "Move forward"],
+    subline: ["Go deeper", "Build smarter", "Carry out", "Move forward"],
     cta: "Connect with us",
-    ctaHref: "/en/#get-in-touch",
+    ctaHref: "/en/contact/",
   },
 } satisfies Record<
   Locale,
