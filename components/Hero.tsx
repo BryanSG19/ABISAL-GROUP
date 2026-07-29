@@ -15,7 +15,7 @@ const COPY = {
   },
   en: {
     title: "Intelligence beneath tomorrow’s business growth.",
-    subline: ["Go deeper", "Build smarter", "Carry out", "Move forward"],
+    subline: ["Explore", "Distinction", "Our Work", "Move forward"],
     cta: "Connect with us",
     ctaHref: "/en/contact/",
   },
