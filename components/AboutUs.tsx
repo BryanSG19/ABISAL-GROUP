@@ -49,6 +49,17 @@ export default function AboutUs() {
               implementar nuevas formas de crear valor en procesos, canales,
               experiencias, modelos de negocio, alianzas y formas de trabajo.
             </p>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate/80">
+              Utilizamos la inteligencia artificial en organizaciones que buscan
+              ir más allá de la experimentación y la búsqueda de eficiencias,
+              para convertirla en una herramienta de creación de valor.
+            </p>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-slate/80">
+              Trabajamos en la intersección de la inteligencia artificial, la
+              estrategia empresarial y la innovación para desarrollar capacidades
+              que mejoren la toma de decisiones, optimicen las operaciones y
+              produzcan resultados tangibles en el desempeño de las organizaciones.
+            </p>
           </motion.div>
         </div>
       </div>
