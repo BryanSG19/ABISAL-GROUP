@@ -44,10 +44,10 @@ export default function AboutUs() {
             className="md:col-span-7 md:col-start-6"
           >
             <p className="text-xl leading-relaxed text-abyss md:text-2xl">
-              ABISAL es una empresa de estrategia e innovación que utiliza la
-              inteligencia artificial para identificar, diseñar e implementar
-              nuevas formas de crear valor en procesos, canales, experiencias,
-              modelos de negocio, alianzas y formas de trabajo.
+              ABISAL es una empresa de innovación y transformación organizacional
+              que utiliza la inteligencia artificial para identificar, diseñar e
+              implementar nuevas formas de crear valor en procesos, canales,
+              experiencias, modelos de negocio, alianzas y formas de trabajo.
             </p>
           </motion.div>
         </div>
