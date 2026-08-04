@@ -44,13 +44,10 @@ export default function AboutUs() {
             className="md:col-span-7 md:col-start-6"
           >
             <p className="text-xl leading-relaxed text-abyss md:text-2xl">
-              ABISAL GROUP is a strategy and applied intelligence firm built
-              for organizations that want to move beyond experimentation.
-            </p>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate/80">
-              We work at the intersection of AI, business strategy,
-              optimization, and new ways of working to design capabilities
-              that improve decisions, operations, and measurable performance.
+              ABISAL es una empresa de estrategia e innovación que utiliza la
+              inteligencia artificial para identificar, diseñar e implementar
+              nuevas formas de crear valor en procesos, canales, experiencias,
+              modelos de negocio, alianzas y formas de trabajo.
             </p>
           </motion.div>
         </div>
