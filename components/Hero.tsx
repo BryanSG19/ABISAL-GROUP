@@ -8,14 +8,14 @@ type Locale = "es" | "en";
 
 const COPY = {
   es: {
-    title: "La inteligencia detrás del crecimiento del mañana.",
-    subline: ["Profundiza", "Desarrolla", "Ejecuta", "Llega más lejos"],
+    title: "La transformación de hoy para el crecimiento de mañana.",
+    subline: ["Profundiza", "Amplía", "Rediseña", "Evoluciona"],
     cta: "Hablemos",
     ctaHref: "/contact/",
   },
   en: {
     title: "Intelligence beneath tomorrow’s business growth.",
-    subline: ["Explore", "Distinction", "Our Work", "Move beyond"],
+    subline: ["Go deeper", "Build smarter", "Carry out", "Move beyond"],
     cta: "Connect with us",
     ctaHref: "/en/contact/",
   },

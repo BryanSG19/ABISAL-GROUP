@@ -36,7 +36,7 @@ function shuffledDelays(count: number) {
 
 const COPY = {
   es: {
-    eyebrow: "Explora",
+    eyebrow: "Profundiza",
     heading: "Lo que hacemos",
     paragraph:
       "Trabajamos con organizaciones en distintos niveles de madurez: desde formación ejecutiva y laboratorios de IA aplicada enfocados en retos específicos, pasando por el desarrollo de aplicaciones a la medida que responden a necesidades reales del negocio, hasta la definición de estrategias y hojas de ruta para su adopción e implementación.",
@@ -68,7 +68,7 @@ const COPY = {
     ],
   },
   en: {
-    eyebrow: "Explore",
+    eyebrow: "Go deeper",
     heading: "What We Do",
     paragraph:
       "We work with organizations at every stage of AI maturity from executive training and applied AI labs focused on specific challenges, to custom applications built around real business needs, to strategies and roadmaps for AI adoption and implementation.",

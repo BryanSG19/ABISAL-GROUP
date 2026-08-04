@@ -9,41 +9,6 @@ const BELIEVE_ICONS = [BrainCircuit, Target, Compass, TrendingUp];
 
 type Locale = "es" | "en";
 
-const MARQUEE_WORDS: Record<Locale, string[]> = {
-  es: [
-    "Estrategia",
-    "Implementación",
-    "IA aplicada",
-    "Crecimiento",
-    "Resultados",
-    "Criterio",
-    "Transformación",
-    "Capacidades",
-    "Innovación",
-    "Adopción",
-    "Valor",
-    "Decisiones",
-    "Desempeño",
-    "Escalabilidad",
-  ],
-  en: [
-    "Strategy",
-    "Implementation",
-    "Applied AI",
-    "Growth",
-    "Results",
-    "Judgment",
-    "Transformation",
-    "Capabilities",
-    "Innovation",
-    "Adoption",
-    "Value",
-    "Decision-Making",
-    "Performance",
-    "Scalability",
-  ],
-};
-
 const COPY = {
   es: {
     eyebrow: "Nosotros",
@@ -153,28 +118,6 @@ function HighlightedStatement({
   );
 }
 
-function Marquee({ locale }: { locale: Locale }) {
-  return (
-    <div className="relative overflow-hidden bg-bone py-6">
-      <div className="marquee-track flex w-max whitespace-nowrap">
-        {[0, 1].map((rep) => (
-          <span
-            key={rep}
-            className="flex items-center px-6 text-[6rem] font-thin uppercase tracking-[0.02em] text-deepblue/80 sm:text-[8rem] md:text-[10.75rem]"
-          >
-            {MARQUEE_WORDS[locale].map((word) => (
-              <span key={word} className="flex items-center">
-                {word}
-                <span className="mx-6 font-medium">+</span>
-              </span>
-            ))}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
   const t = COPY[locale];
 
@@ -189,12 +132,6 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
           backgroundSize: "22px 22px",
         }}
       >
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-6 top-24 select-none text-[10rem] font-extrabold leading-none text-abyss/[0.04] sm:text-[14rem]"
-        >
-          01
-        </span>
         <div className="container-content relative pt-16 md:pt-20">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
             <motion.div
@@ -204,7 +141,7 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6"
             >
-              <p className="mb-8 inline-block -rotate-2 bg-acid px-4 py-1.5 text-xl font-semibold uppercase tracking-[0.15em] text-abyss shadow-[6px_6px_0_0_rgba(0,14,25,0.12)] md:text-2xl">
+              <p className="mb-8 text-4xl font-thin uppercase tracking-[0.15em] text-abyss md:text-5xl">
                 {t.eyebrow}
               </p>
               <p className="text-3xl font-extrabold leading-[1.15] tracking-tight text-abyss sm:text-4xl">
@@ -236,8 +173,6 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
         </div>
       </section>
 
-      <Marquee locale={locale} />
-
       <section
         className="relative overflow-hidden bg-bone py-24 md:py-32"
         style={{
@@ -257,12 +192,6 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
           className="pointer-events-none absolute -right-10 bottom-8 rotate-6 select-none text-[6rem] font-extrabold uppercase leading-none text-abyss/[0.05] sm:text-[9rem]"
         >
           {locale === "es" ? "Artificial" : "Intelligence"}
-        </span>
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-6 top-4 select-none text-[10rem] font-extrabold leading-none text-abyss/[0.04] sm:text-[14rem]"
-        >
-          02
         </span>
 
         <div className="container-content relative">
@@ -297,12 +226,6 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
       </section>
 
       <section className="relative overflow-hidden bg-bone py-24 md:py-32">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-6 top-4 select-none text-[10rem] font-extrabold leading-none text-abyss/[0.04] sm:text-[14rem]"
-        >
-          03
-        </span>
         <div className="container-content relative">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
             <motion.div
@@ -351,12 +274,6 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
           backgroundSize: "22px 22px",
         }}
       >
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-6 bottom-0 select-none text-[10rem] font-extrabold leading-none text-abyss/[0.04] sm:text-[14rem]"
-        >
-          04
-        </span>
         <div className="container-content relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -15,36 +15,38 @@ const SHOWCASE_IMAGES = [
 
 const COPY = {
   es: {
-    highlight: "Profundiza",
     heading: "Estrategia, inteligencia aplicada y capacidades para el crecimiento.",
     paragraph:
-      "ABISAL GROUP diseña marcos de trabajo a la medida que transforman la toma de decisiones y las formas de trabajar, integrando la inteligencia artificial para impulsar operaciones más inteligentes, un desempeño superior y resultados tangibles y medibles.",
+      "ABISAL impulsa la transformación de las organizaciones ampliando el campo de la innovación más allá del producto.",
+    paragraph2:
+      "Utilizamos la inteligencia artificial para repensar cómo las empresas toman decisiones, diseñan sus procesos, operan, se relacionan con sus clientes y desarrollan sus capacidades. Esto mediante rutas adaptadas a la escala, madurez y realidad de cada una de ellas, orientadas a lograr operaciones más inteligentes, un desempeño superior y resultados medibles.",
     cards: [
       {
         number: "01",
-        title: "Formación práctica en IA",
+        title: "Profundiza en la realidad del negocio",
         description:
-          "Fortalecemos la confianza y las capacidades de los equipos para apropiarse de la IA.",
+          "Partimos de la realidad, la escala y las prioridades de cada organización, y profundizamos en el ecosistema en el que opera y las señales de cambio que pueden redefinir su futuro para identificar oportunidades que no siempre son evidentes.",
         image: "/capabilities/card-01-ai-literacy-es.webp",
       },
       {
         number: "02",
-        title: "Laboratorios de IA aplicada",
+        title: "Amplía el campo de la innovación",
         description:
-          "Convertimos desafíos empresariales en soluciones concretas y resultados medibles.",
+          "Utilizamos la IA para llevar la innovación más allá del producto y explorar nuevas posibilidades en el modelo de negocio, los procesos, la experiencia del cliente y la forma en que la organización trabaja.",
         image: "/capabilities/card-02-applied-ai-sprints-es.webp",
       },
       {
         number: "03",
-        title: "Estrategia y adopción de IA",
-        description: "Pasamos de la experimentación a la generación de valor.",
+        title: "Rediseña antes de automatizar",
+        description:
+          "Replanteamos procesos, decisiones y formas de trabajo a partir de las posibilidades que abre la IA. La transformación no comienza incorporando IA al proceso existente, sino reconsiderando el proceso desde sus fundamentos.",
         image: "/capabilities/card-03-ai-strategy-adoption-es.webp",
       },
       {
         number: "04",
-        title: "Aplicaciones y agentes personalizados",
+        title: "Evoluciona para sostener el cambio.",
         description:
-          "Creamos flujos de trabajo automatizados a la medida para necesidades empresariales en constante evolución.",
+          "Desarrollamos capacidades de transformación mediante la integración de las estructuras y formas de trabajo necesarias para que la organización pueda implementar, adaptarse, aprender y evolucionar de manera continua.",
         image: "/capabilities/card-04-custom-engines-agents-es.webp",
       },
     ],
@@ -128,6 +130,17 @@ export default function IntroCapabilities({
             >
               {t.paragraph}
             </motion.p>
+            {"paragraph2" in t && t.paragraph2 && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-4 max-w-xl text-base leading-relaxed text-coolgray md:text-lg"
+              >
+                {t.paragraph2}
+              </motion.p>
+            )}
           </div>
 
           <motion.div

@@ -144,7 +144,7 @@ const COPY = {
     ],
   },
   en: {
-    eyebrow: "Our Work",
+    eyebrow: "Carry out",
     heading: "Our Work",
     cases: [
       {

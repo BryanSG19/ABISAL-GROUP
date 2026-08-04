@@ -30,7 +30,7 @@ const INTRO: Record<Locale, { eyebrow: string; heading: string; paragraph: strin
       "Vamos más allá del desafío aparente para comprender de forma integral el negocio y el entorno en el que opera. Desde esa perspectiva, diseñamos marcos de trabajo y aplicaciones inteligentes adaptadas a las necesidades reales de cada organización, orientadas al desarrollo de capacidades sostenibles, repetibles y escalables que se traduzcan en creación de valor, crecimiento y resultados medibles.",
   },
   en: {
-    eyebrow: "Distinction",
+    eyebrow: "Build smarter",
     heading: "The Abisal Difference",
     paragraph:
       "We look beneath the surface of each challenge to understand the business and its operating environment as a whole. From that perspective, we design tailored frameworks and intelligent applications around each organization's real needs building sustainable, repeatable, and scalable capabilities that drive value creation, growth, and measurable results.",
@@ -55,16 +55,16 @@ const PILLARS: Record<Locale, Pillar[]> = {
     },
     {
       number: "03",
-      title: "Aplicación inteligente de la IA",
+      title: "Perspectiva de futuro y anticipación estratégica",
       description:
-        "Integramos la IA donde puede generar mayor valor y apalancamiento para el negocio, trascendiendo la eficiencia, el ahorro y la optimización del desempeño.",
+        "Abordamos los desafíos del presente interpretando las señales emergentes, tendencias y cambios en el entorno para anticipar sus implicaciones y preparar a la organización con la mirada puesta en el futuro.",
       icon: BrainCircuit,
     },
     {
       number: "04",
-      title: "Aplicación responsable de la IA",
+      title: "Aplicación inteligente y responsable de la IA",
       description:
-        "Incorporamos criterios éticos, de transparencia y supervisión humana para asegurar una aplicación responsable y alineada con la realidad de cada organización.",
+        "Integramos la IA donde puede generar mayor valor y apalancamiento para el negocio, incorporando criterios éticos, de transparencia y supervisión humana que aseguren una aplicación responsable y alineada con la realidad de cada organización.",
       icon: ShieldCheck,
     },
     {
@@ -85,7 +85,7 @@ const PILLARS: Record<Locale, Pillar[]> = {
       number: "07",
       title: "Desarrollo de capacidades",
       description:
-        "Superamos la experimentación para desarrollar capacidades y nuevas formas de trabajo sostenibles, repetibles y escalables.",
+        "Vamos más allá de la experimentación, enfocados en desarrollar capacidades y nuevas formas de trabajo sostenibles, repetibles y escalables.",
       icon: TrendingUp,
     },
     {

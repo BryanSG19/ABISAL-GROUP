@@ -106,7 +106,7 @@ const COPY: Record<
     ],
   },
   en: {
-    eyebrow: "Distinction",
+    eyebrow: "Build smarter",
     heading: "The Abisal Difference",
     paragraph:
       "We look beneath the surface of each challenge to understand the business and its operating environment as a whole. From that perspective, we design tailored frameworks and intelligent applications around each organization's real needs building sustainable, repeatable, and scalable capabilities that drive value creation, growth, and measurable results.",
