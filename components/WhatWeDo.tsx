@@ -36,20 +36,20 @@ function shuffledDelays(count: number) {
 
 const COPY = {
   es: {
-    eyebrow: "Profundiza",
+    eyebrow: "",
     heading: "Lo que hacemos",
     paragraph:
       "Trabajamos con organizaciones en distintos niveles de madurez: desde formación ejecutiva y laboratorios de IA aplicada enfocados en retos específicos, pasando por el desarrollo de aplicaciones a la medida que responden a necesidades reales del negocio, hasta la definición de estrategias y hojas de ruta para su adopción e implementación.",
     services: [
       {
         number: "01",
-        title: "Formación práctica en IA",
+        title: "Laboratorios de innovación con IA",
         description:
-          "Talleres, sesiones ejecutivas y formación práctica que ayudan a los equipos a superar las barreras de adopción de la IA, comprender su estado actual, dimensionar su impacto y aplicarla en su contexto diario de negocio, no solo para generar eficiencias, sino también para crear valor.",
+          "Talleres, sesiones ejecutivas y programas de formación práctica que ayudan a los equipos a aplicar la IA en su contexto cotidiano de negocio, no solo para generar eficiencias, sino también para crear valor, superar barreras de adopción, comprender su nivel actual de madurez y dimensionar su impacto.",
       },
       {
         number: "02",
-        title: "Laboratorios de IA aplicada",
+        title: "Proyectos de IA aplicada",
         description:
           "Proyectos enfocados que resuelven desafíos empresariales específicos en un plazo definido, con entregables y resultados tangibles que demuestran el valor de la aplicación de la IA, con miras a transformar la toma de decisiones, mejorar la ejecución y desarrollar nuevas capacidades.",
       },
@@ -124,7 +124,7 @@ export default function WhatWeDo({ locale = "en" }: { locale?: Locale }) {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="eyebrow mb-4 text-[#8a9a1f]">{t.eyebrow}</p>
+          {t.eyebrow && <p className="eyebrow mb-4 text-[#8a9a1f]">{t.eyebrow}</p>}
           <h2 className="text-3xl font-thin leading-tight text-abyss md:text-4xl">
             {t.heading}
           </h2>

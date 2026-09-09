@@ -13,10 +13,12 @@ const COPY = {
   es: {
     eyebrow: "Nosotros",
     para1:
-      "ABISAL es una empresa de estrategia e implementación de inteligencia artificial aplicada para organizaciones que buscan ir más allá de la experimentación y la búsqueda de eficiencias, para convertir la IA en una herramienta de creación de valor.",
-    para1Highlight: "creación de valor",
+      "ABISAL es una empresa de innovación y transformación organizacional que utiliza la inteligencia artificial para identificar, diseñar e implementar nuevas formas de crear valor en procesos, canales, experiencias, modelos de negocio, alianzas y formas de trabajo.",
+    para1Highlight: "crear valor",
     para2:
-      "Trabajamos en la intersección de la inteligencia artificial, la estrategia empresarial y las nuevas formas de trabajo para desarrollar capacidades que mejoren la toma de decisiones, optimicen las operaciones y produzcan resultados tangibles en el desempeño de las organizaciones.",
+      "Utilizamos la inteligencia artificial en organizaciones que buscan ir más allá de la experimentación y la búsqueda de eficiencias, para convertirla en una herramienta de creación de valor.",
+    para3:
+      "Trabajamos en la intersección de la inteligencia artificial, la estrategia empresarial y la innovación para desarrollar capacidades que mejoren la toma de decisiones, optimicen las operaciones y produzcan resultados tangibles en el desempeño de las organizaciones.",
     whyTitle: "Nuestra razón de ser",
     whyPara1:
       "La inteligencia artificial y las nuevas tecnologías representan una de las mayores oportunidades de transformación para las organizaciones. Sin embargo, su verdadero potencial no está en incorporar más herramientas, sino en desarrollar las capacidades necesarias para tomar mejores decisiones, transformar las formas de trabajo y construir ventajas competitivas sostenibles.",
@@ -141,15 +143,20 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6"
             >
-              <p className="mb-8 text-4xl font-thin uppercase tracking-[0.15em] text-abyss md:text-5xl">
+              <p className="mb-8 text-[3.375rem] font-thin uppercase tracking-[0.15em] text-abyss md:text-[4.5rem]">
                 {t.eyebrow}
               </p>
-              <p className="text-3xl font-extrabold leading-[1.15] tracking-tight text-abyss sm:text-4xl">
+              <p className="text-[1.40625rem] font-extrabold leading-[1.15] tracking-tight text-abyss sm:text-[1.6875rem]">
                 <HighlightedStatement text={t.para1} highlight={t.para1Highlight} />
               </p>
               <p className="mt-8 max-w-xl text-base leading-relaxed text-slate/80">
                 {t.para2}
               </p>
+              {"para3" in t && t.para3 && (
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-slate/80">
+                  {t.para3}
+                </p>
+              )}
             </motion.div>
 
             <motion.div
@@ -193,6 +200,12 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
         >
           {locale === "es" ? "Artificial" : "Intelligence"}
         </span>
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-16 top-8 rotate-3 select-none text-[6rem] font-extrabold uppercase leading-none text-abyss/[0.05] sm:text-[9rem]"
+        >
+          {locale === "es" ? "Innovación" : "Innovation"}
+        </span>
 
         <div className="container-content relative">
           <motion.div
@@ -235,7 +248,7 @@ export default function AboutUs({ locale = "en" }: { locale?: Locale }) {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6"
             >
-              <div className="relative aspect-[16/9] w-full">
+              <div className="relative aspect-[16/9] w-full lg:origin-right lg:scale-150">
                 <Image
                   src="/about-us/razon-de-ser.webp"
                   alt=""

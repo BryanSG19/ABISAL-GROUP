@@ -24,7 +24,7 @@ type Pillar = {
 
 const INTRO: Record<Locale, { eyebrow: string; heading: string; paragraph: string }> = {
   es: {
-    eyebrow: "Desarrolla",
+    eyebrow: "",
     heading: "La diferencia Abisal",
     paragraph:
       "Vamos más allá del desafío aparente para comprender de forma integral el negocio y el entorno en el que opera. Desde esa perspectiva, diseñamos marcos de trabajo y aplicaciones inteligentes adaptadas a las necesidades reales de cada organización, orientadas al desarrollo de capacidades sostenibles, repetibles y escalables que se traduzcan en creación de valor, crecimiento y resultados medibles.",
@@ -722,7 +722,9 @@ export default function AbyssalDescent({ locale = "en" }: { locale?: Locale }) {
           className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 text-center"
         >
           <div className="max-w-3xl">
-            <p className="eyebrow mb-4 !text-[0.9375rem] md:!text-[1.09375rem]">{intro.eyebrow}</p>
+            {intro.eyebrow && (
+              <p className="eyebrow mb-4 !text-[0.9375rem] md:!text-[1.09375rem]">{intro.eyebrow}</p>
+            )}
             <h2 className="text-[2.34375rem] font-thin leading-tight text-white md:text-6xl">
               {intro.heading}
             </h2>

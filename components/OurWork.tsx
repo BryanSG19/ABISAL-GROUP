@@ -89,8 +89,8 @@ function WorkCard({ item }: { item: WorkCase }) {
 
 const COPY = {
   es: {
-    eyebrow: "Ejecuta",
-    heading: "Nuestro Trabajo",
+    eyebrow: "",
+    heading: "Nuestro trabajo",
     cases: [
       {
         category: "Laboratorio de IA aplicada",
@@ -213,7 +213,7 @@ export default function OurWork({ locale = "en" }: { locale?: Locale }) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl"
         >
-          <p className="eyebrow mb-4">{t.eyebrow}</p>
+          {t.eyebrow && <p className="eyebrow mb-4">{t.eyebrow}</p>}
           <h2 className="text-3xl font-thin leading-tight text-bone md:text-4xl">
             {t.heading}
           </h2>

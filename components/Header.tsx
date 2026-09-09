@@ -13,7 +13,7 @@ const NAV_LINKS: Record<Locale, { label: string; href: string }[]> = {
     { label: "Lo que hacemos", href: "/what-we-do/" },
     { label: "La diferencia Abisal", href: "/abisal-difference/" },
     { label: "Nosotros", href: "/about-us/" },
-    { label: "Nuestro Trabajo", href: "/our-work/" },
+    { label: "Nuestro trabajo", href: "/our-work/" },
   ],
   en: [
     { label: "What We Do", href: "/en/what-we-do/" },
